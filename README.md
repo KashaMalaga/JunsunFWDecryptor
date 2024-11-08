@@ -26,8 +26,23 @@ tee1: tee.img (1895039232 bytes), flags: 0x00000000, offset: 0x56B5E77F3
 tee2: tee.img (1895039232 bytes), flags: 0x00000000, offset: 0x5DC5278F3
 
 Next steps, conversion from img to raw partition and later extract the raw one with this commands.
+brew install simg2img
 simg2img super.img super.raw
+http://newandroidbook.com/tools/imjtool
+xattr -d com.apple.quarantine imjtool
+chmod 777 imjtool
 ./imjtool super.raw extract
+
+Log:
+MMapped: 0x300000000, imgMeta 0x300001000
+liblp dynamic partition (super.img) - Blocksize 0x1000, 2 slots
+LP MD Header @0x3000, version 10.0, with 3 logical partitions @0x0 on block device of 4096 GB, at partition super, first sector: 0x800
+Partitions @0x3080 in 2 groups:
+        Group 0: default
+        Group 1: main
+                Name: product (read-only, Unknown, @0x100000 spanning 1 extents of 235 MB) - extracted
+                Name: system (read-only, Unknown, @0xed00000 spanning 1 extents of 2 GB) - extracted
+                Name: vendor (read-only, Unknown, @0x92f00000 spanning 1 extents of 1 GB) - extracted
 
 
 Repacker usage:
